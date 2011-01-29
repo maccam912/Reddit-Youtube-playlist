@@ -36,7 +36,9 @@ class YoutubeplaylistController < ApplicationController
     end
     $youtubecodes.uniq!
     $durations = Array.new
-    $durations << 5
+    $durations << 2
+    $titles = Array.new
+    $titles << "Loading..."
     $youtubecodes.each do |ytc|
       puts ytc
       begin
@@ -47,6 +49,7 @@ class YoutubeplaylistController < ApplicationController
         next
       end
       $durations << video.at("yt:duration").attributes['seconds']
+      $titles <<  video.search("title").inner_html
     end
     $number = $youtubecodes.length
   end
@@ -54,7 +57,7 @@ class YoutubeplaylistController < ApplicationController
     $count += 1
     $time = Array.new
     $durations.each do |d|
-      $time << d
+      $time << (d.to_i + 3)
     end
     $youtubeurl = ["http://www.whatismyip.org"]
     $youtubecodes.each do |ytc|
