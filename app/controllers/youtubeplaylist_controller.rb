@@ -20,14 +20,17 @@ class YoutubeplaylistController < ApplicationController
     end
     $youtubecodes = Array.new
     $youtubes.each do |yt|
-      $youtubecodes << yt[55..65]
+      $youtubecodes << yt.gsub(/.*v=([^&]+).*$/i, '\1').to_s[0..10]
     end
+    $youtubecodes.uniq!
     $durations = Array.new
     $durations << 5
     $youtubecodes.each do |ytc|
       video = Hpricot.XML(open("http://gdata.youtube.com/feeds/api/videos/#{ytc}"))
       $durations << video.at("yt:duration").attributes['seconds']
     end
+    $number = $youtubecodes.length
+    puts $youtubecodes
   end
   def youtubeframe
     $count += 1

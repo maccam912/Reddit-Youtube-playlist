@@ -65,8 +65,6 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
-    video_info (0.2.4)
-      hpricot (~> 0.8.3)
 
 PLATFORMS
   ruby
@@ -75,4 +73,3 @@ DEPENDENCIES
   hpricot
   rails (= 3.0.3)
   sqlite3-ruby
-  video_info
