@@ -36,7 +36,7 @@ class YoutubeplaylistController < ApplicationController
     end
     $youtubecodes.uniq!
     $durations = Array.new
-    $durations << "3"
+    $durations << "0"
     $titles = Array.new
     $titles << "Loading..."
     $youtubecodes.each do |ytc|
@@ -51,18 +51,44 @@ class YoutubeplaylistController < ApplicationController
       $durations << video.xpath("//yt:duration").to_s[22..24].to_i
       $titles <<  video.search("title").text
     end
-    puts $durations
     $number = $youtubecodes.length
-  end
-  def youtubeframe
-    $count += 1
-    $time = Array.new
-    $durations.each do |d|
-      $time << (d.to_i + 2)
-    end
     $youtubeurl = ["http://www.whatismyip.org"]
     $youtubecodes.each do |ytc|
       $youtubeurl << "http://www.youtube.com/v/#{ytc}"
     end
+    $youtubeurlcsv = ""
+    $durationscsv = ""
+    $titlescsv = ""
+    $youtubeurl.each do |url|
+      $youtubeurlcsv = $youtubeurlcsv + "#{url}, "
+    end
+    $durations.each do |duration|
+      $durationscsv = $durationscsv + "#{duration}, "
+    end
+    $titles.each do |title|
+      $titlescsv = $titlescsv + "#{title}, "
+    end
+  end
+  def youtubeframe
+    if $count >= 0
+      $count = params['count'].to_i
+      $count += 1
+    elsif $count == -1
+      $count += 1
+    end
+    if $count > 0
+      $titles = params['title_array'].split(',').collect {|h| h.strip}
+      $titles = $titles[0..-2]
+      $durations = params['duration_array'].split(',').collect {|h| h.strip}
+      $durations = $durations[0..-2]
+      $youtubeurl = params['youtubeurl_array'].split(',').collect {|h| h.strip}
+      $youtubeurl = $youtubeurl[0..-2]
+      $number = params['number'].to_i
+    end
+    puts $titles
+    puts $durations
+    puts $youtubeurl
+    puts $count
+    puts $number
   end
 end
