@@ -70,13 +70,9 @@ class YoutubeplaylistController < ApplicationController
     end
   end
   def youtubeframe
-    if $count >= 0
+    if $count > 0
       $count = params['count'].to_i
       $count += 1
-    elsif $count == -1
-      $count += 1
-    end
-    if $count > 0
       $titles = params['title_array'].split(',').collect {|h| h.strip}
       $titles = $titles[0..-2]
       $durations = params['duration_array'].split(',').collect {|h| h.strip}
@@ -84,11 +80,28 @@ class YoutubeplaylistController < ApplicationController
       $youtubeurl = params['youtubeurl_array'].split(',').collect {|h| h.strip}
       $youtubeurl = $youtubeurl[0..-2]
       $number = params['number'].to_i
+    elsif $count == -1
+      $count += 1
+    elsif $count == 0
+      $count = params['count'].to_i
+      $count += 1
     end
     puts $titles
     puts $durations
     puts $youtubeurl
     puts $count
     puts $number
+    $youtubeurlcsv = ""
+    $durationscsv = ""
+    $titlescsv = ""
+    $youtubeurl.each do |url|
+      $youtubeurlcsv = $youtubeurlcsv + "#{url}, "
+    end
+    $durations.each do |duration|
+      $durationscsv = $durationscsv + "#{duration}, "
+    end
+    $titles.each do |title|
+      $titlescsv = $titlescsv + "#{title}, "
+    end
   end
 end
