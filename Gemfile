@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
-gem 'nokogiri'
 gem 'hpricot'
 
 # Bundle edge Rails instead:
