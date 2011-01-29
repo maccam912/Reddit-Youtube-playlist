@@ -1,4 +1,4 @@
-<%= form_tag('/playlist') do %>
+<%= form_tag('/playlist', :method => 'get') do %>
 	Link:<%= text_field_tag 'link', "http://www.reddit.com/r/dubstep", :size => "50" %>
 	Page to end on:<%= text_field_tag 'pageend', "10" %>
 	<%= submit_tag 'Play' %>
