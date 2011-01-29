@@ -1,4 +1,7 @@
 <%= form_tag('/playlist') do %>
-	<%= text_field_tag 'link' %>
+	Link:<%= text_field_tag 'link', "http://www.reddit.com/r/dubstep", :size => "50" %>
+	Page to end on:<%= text_field_tag 'pageend', "10" %>
 	<%= submit_tag 'Play' %>
 <% end %>
+<br>
+After clicking play, give the server a few seconds to organize all the youtube links. If you get errors, set the number of pages lower.

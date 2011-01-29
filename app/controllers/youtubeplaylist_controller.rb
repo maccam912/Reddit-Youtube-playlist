@@ -6,11 +6,23 @@ class YoutubeplaylistController < ApplicationController
   def playlist
     $links = Array.new
     $link = params['link']
+    $originallink = $link
+    $pagestart = 1
+    $pageend = params['pageend'].to_i
     $count = -1
-    $site = open($link)
-    $doc = Hpricot($site)
-    $doc.search("a[$href]").each do |href|
-      $links << href.to_s
+    while ($pagestart <= $pageend) do
+      $site = open($link)
+      $doc = Hpricot($site)
+      $doc.search("a[$href]").each do |href|
+        $links << href.to_s
+      end
+      if $pagestart == 1
+        $link = $doc.at("//html/body/div[4]/p/a")['href']
+      elsif $pagestart != 1
+        $link = $doc.at("//html/body/div[4]/p/a[2]")['href']
+      end
+      puts $link
+      $pagestart += 1
     end
     $youtubes = Array.new
     $links.each do |link|
@@ -26,11 +38,17 @@ class YoutubeplaylistController < ApplicationController
     $durations = Array.new
     $durations << 5
     $youtubecodes.each do |ytc|
-      video = Hpricot.XML(open("http://gdata.youtube.com/feeds/api/videos/#{ytc}"))
+      puts ytc
+      begin
+        video = Hpricot.XML(open("http://gdata.youtube.com/feeds/api/videos/#{ytc}"))
+      rescue
+        puts "Error while opening id #{ytc}"
+        $youtubecodes.delete("#{ytc}")
+        next
+      end
       $durations << video.at("yt:duration").attributes['seconds']
     end
     $number = $youtubecodes.length
-    puts $youtubecodes
   end
   def youtubeframe
     $count += 1
