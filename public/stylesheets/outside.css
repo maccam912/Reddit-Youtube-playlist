@@ -1,0 +1,73 @@
+/*PROTIP: If something isn't working, check for typos. If it's still not working make sure you have your semi-colon in the right place. */
+
+/* Entire site (all pages, everyting) */
+body {
+	background-color:#0B5FA5;
+	text-align:center;
+	font-family:georgia;
+	padding: 25px 0px 0px 0px;
+}
+
+/* Text on first page */
+p {
+	color:#FFE773;
+	font-size:14pt;
+	padding:8px 8px 10px 10px;
+	background-color:#66A1D2;
+	-moz-border-radius: 2px 40px;
+	border-radius: 2px 40px;
+}
+
+/* top text on first page */
+form.firstform {
+	font-size:38pt;
+	color:#071D70;
+	padding:30px 30px 35px 30px;
+	background-color:#FFFFFF;
+	-moz-border-radius: 2px 30px;
+	border-radius: 2px 30px;
+}
+
+/* Where it says "Music on..." */
+h1 {
+	background-color: #FFFFFF;
+	font-size:38pt;
+	color:#071D70;
+	padding:30px 30px 35px 30px;
+	-moz-border-radius:2px 30px;
+	border-radius:2px 30px;
+}
+
+/* Where it says how many songs are from youtube, how many from soundcloud */
+h3 {
+	color:#FFE773;
+	font-size:18pt;
+	font-weight: normal;
+	background-color:#66A1D2;
+	-moz-border-radius: 2px 30px;
+	border-radius: 2px 30px;
+}
+
+/* Where it says the name of the song and what number it is */
+h2 {
+	color:#FFE773;
+	font-size:14pt;
+	padding: 25px 25px 25px 25px;
+	background-color:#66A1D2;
+	-moz-border-radius: 2px 30px;
+	border-radius: 2px 30px;
+}
+/* Where you type things in on the front page */
+input {
+	border : 2px solid #071D70;
+	background-color : #FFFFFF;
+	color : black;
+	font-size : 12pt;
+	font-family : georgia;
+	height: 10pt;
+	padding: 0px 0px 15px 0px;
+}
+
+input.bigger {
+	height: 18pt;
+}

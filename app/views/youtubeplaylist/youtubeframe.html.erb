@@ -1,12 +1,12 @@
+<%= stylesheet_link_tag "innerframe.css" %>
 <h2>Playing <%= "#{$count} of #{$number}" %>: <%= $titles[$count] %></h2>
-
 <%= form_tag('/youtubeframe', :id => "csv") do %>
 <%= hidden_field_tag 'duration_array', $durationscsv %>
 <%= hidden_field_tag 'title_array', $titlescsv %>
 <%= hidden_field_tag 'url_array', $urlcsv %>
 <%= hidden_field_tag 'count', $count %>
 <%= hidden_field_tag 'number', $number %>
-<%= submit_tag "Next" %>
+<%= submit_tag "Next", :class => "bigger" %>
 <% end %>
 <% $ms = (($durations[$count].to_i + 2) * 1000).to_s %>
 <%= raw "<SCRIPT LANGUAGE=\"Javascript\">

@@ -1,14 +1,14 @@
-<%= form_tag('/playlist', :method => 'get') do %>
+<%= form_tag('/playlist', :method => 'get', :class => 'firstform') do %>
 	Link:<%= text_field_tag 'link', "http://www.reddit.com/r/dubstep", :size => "50" %>
 	Page to end on (33 max):<%= text_field_tag 'pageend', "1" %>
-	<%= submit_tag 'Play' %>
+	<%= submit_tag 'Play', :class => "bigger" %>
 <% end %>
-After clicking play, give the server a few seconds to organize all the youtube links. If you get errors, set the number of pages lower.<br>
+<p>After clicking play, give the server a few seconds to organize all the youtube links. If you get errors, set the number of pages lower.<br>
 The link can be a link to searching reddit (when you search for a specific artist, for example) but the pages need to be set to 1.<br><br>
-<p>UPDATE: I'm pretty sure it's set up the way I imagined it. I still don't have SoundCloud integrated, but most of the bugs are out, and the remaining ones are ones I don't think I can fix for free (heroku's 30 second timeout, backlogs, etc.). If you have other suggestions or bugs for me, email with the email address here:<a href="http://scr.im/3x2">http://scr.im/3x2</a>.
+UPDATE: I'm pretty sure it's set up the way I imagined it. I still don't have SoundCloud integrated, but most of the bugs are out, and the remaining ones are ones I don't think I can fix for free (heroku's 30 second timeout, backlogs, etc.). If you have other suggestions or bugs for me, email with the email address here:<a href="http://scr.im/3x2">http://scr.im/3x2</a>.
 	
 <br><br>
 NOTE: With soundcloud integration finding the music takes longer. You might need to lower the page count so you don't hit the 30 second timeout.<br><br>
 
 	
-<p>UPDATE 2: SoundCloud should work now. It first plays through the soundcloud songs (usually better quailty audio) then plays the youtube music.
+UPDATE 2: SoundCloud should work now. It first plays through the soundcloud songs (usually better quailty audio) then plays the youtube music.
